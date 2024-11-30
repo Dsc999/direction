@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>2024届盐高12班同学毕业去向</title>
+    <link rel="stylesheet" href="styles.css"> 
+    <style>
+        #map {
+            height: 600px; 
+            width: 100%; 
+        }
+    </style>
+    <script src="https://webapi.amap.com/maps?v=1.4.15&key=KEY"></script>
+</head>
+<body>
+    <header>
+        <h1 style="text-align: center;">2024届盐高12班同学毕业去向</h1>
+    </header>
+    <main>
+        <div id="map"></div> <!-- 地图容器 -->
+    </main>
+    <footer>
+        <p style="text-align: right;">&copy; 2024年8月 杨强编写</p>
+		<p style="text-align: right;">  感谢高德地图api</p>
+    </footer>
+
+    <script>
+        function initMap() {
+            const map = new AMap.Map('map', {
+                resizeEnable: true,
+                center: [116.397428, 39.90923], 
+                zoom: 5 // 
+            });
+            const students = [
+                {name: '姚宇杰', school: '安徽国际商务职业学院', location: [117.269473, 31.987841]},
+                {name: '陈屹能', school: '安徽建筑大学', location: [117.223488, 31.744039]},
+                {name: '乔璐璐', school: '安阳工学院', location: [114.349647, 36.0657]},
+                {name: '杨悦', school: '大连大学', location: [121.819312, 39.100368]},
+                {name: '沈逸乐', school: '大连东软信息学院', location: [121.444316, 38.85104]},
+                {name: '胡桥', school: '邯郸学院', location: [114.509598, 36.57624]},
+                {name: '马恺轩', school: '杭州医学院', location: [119.737202, 30.210503]},
+                {name: '郭卓宇', school: '河南开封科技传媒大学', location: [114.299672, 34.819915]},
+                {name: '陈辰', school: '湖州师范学院', location: [120.129237, 30.873799]},
+                {name: '赵文浩', school: '华北水利水电大学', location: [113.675229, 34.813003]},
+                {name: '汤俊', school: '嘉兴大学', location: [120.714415, 30.738188]},
+                {name: '张涵羽', school: '嘉兴南湖学院', location: [120.729373, 30.747117]},
+                {name: '袁凯运', school: '江苏大学京江学院', location: [119.353724, 32.11347]},
+                {name: '王子也', school: '金华职业技术大学', location: [119.636421, 29.062589]},
+                {name: '夏晋东', school: '南京理工大学泰州科技学院', location: [119.940498, 32.463822]},
+                {name: '顾益铭', school: '三亚学院', location: [109.562547, 18.331746]},
+                {name: '王佳杰', school: '台州学院', location: [121.389704, 28.652939]},
+                {name: '宫政', school: '台州学院', location: [121.389704, 28.652939]},
+                {name: '姜豪', school: '台州学院', location: [121.389704, 28.652939]},
+                {name: '徐哲浩', school: '天津城建大学', location: [117.095444, 39.094968]},
+                {name: '周鑫童', school: '天津大学仁爱学院', location: [117.155681, 38.885876]},
+                {name: '胡云跃', school: '渭南师范学院', location: [109.46567, 34.491028]},
+                {name: '徐展豪', school: '温州医科大学仁济学院', location: [121.134559, 27.8478429]},
+                {name: '赵恩泽', school: '无锡太湖学院', location: [120.227487, 31.574358]},
+                {name: '杨强,罗康乐', school: '武昌工学院', location: [114.284875, 30.482596]},
+                {name: '姜诚怡', school: '武汉华夏理工学院', location: [114.411298, 30.467068]},
+                {name: '柳叶飘飘', school: '长春工业大学人文信息学院', location: [125.428122, 43.781599]},
+                {name: '陈昊,王鑫宇', school: '浙江财经大学东方学院', location: [120.439048, 30.4273]},
+                {name: '孙金辰', school: '浙江工业大学之江学院', location: [120.479994, 30.094406]},
+                {name: '迟焕涛', school: '浙江工业职业技术学院', location: [120.577199, 30.02917]},
+                {name: '蒉克雷', school: '浙江理工大学科技与艺术学院', location: [120.82008, 30.183729]},
+                {name: '汪涛', school: '浙江师范大学行知学院', location: [119.490962, 29.17602]},
+                {name: '王殷萧', school: '浙江树人学院', location: [120.157608, 30.318285]},
+                {name: '高家琪', school: '浙江越秀外国语学院', location: [120.602523, 29.968738]},
+				{name: '吴汪阳', school: '新疆塔里木大学', location: [81.291100, 40.543930]},
+            ];
+            students.forEach(student => {
+                const marker = new AMap.Marker({
+                    position: student.location,
+                    title: student.name,
+                    map: map
+                });
+                const infoWindow = new AMap.InfoWindow({
+                    content: `<h3>${student.name}</h3><p>院校名称: ${student.school}</p>`,
+                    offset: new AMap.Pixel(0, -30)
+                });
+
+                marker.on('click', function() {
+                    infoWindow.open(map, marker.getPosition());
+                });
+            });
+        }
+        window.onload = initMap;
+    </script>
+</body>
+</html>
